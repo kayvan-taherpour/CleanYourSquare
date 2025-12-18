@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Clean Your Square</title>
+    <link rel="icon" type="image/png" href="images/Favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/CYS Logo.png" alt="Clean Your Square" class="logo-img">
+            </a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="tel:5206509860" class="phone-link">(520) 650-9860</a>
+        </nav>
+    </header>
+    <main class="main-content">
+        <section class="about-section">
+            <h1>About Us</h1>
+            <p class="about-text">
+                Clean Your Square is dedicated to providing top-notch cleaning services.<br>
+                We offer cleaning services for both home and business properties.<br>
+                Our team is professional, trustworthy, and committed to making your space a clean square.<br>
+                We offer regular and recurring cleaning options, from standard to deep clean and everything in between.<br>
+                Enjoy seamless invoicing and payment options through Stripe for your convenience.
+            </p>
+            <div class="cta-container">
+                <a href="#contact" class="cta-btn">Get a Free Quote</a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        &copy; 2025 Clean Your Square LLC. All rights reserved.
+    </footer>
+
+    <!-- Quote Request Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Get Your Free Quote</h2>
+            <p>Reach out to us today to schedule your cleaning service!</p>
+            <div class="contact-options">
+                <a href="tel:5206509860" class="contact-option">
+                    <span class="icon">📞</span>
+                    <span>Call Us</span>
+                    <span class="contact-detail">(520) 650-9860</span>
+                </a>
+                <a href="mailto:hello@cleanyoursquare.com" class="contact-option">
+                    <span class="icon">✉️</span>
+                    <span>Email Us</span>
+                    <span class="contact-detail">hello@cleanyoursquare.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navLinksItems = document.querySelectorAll('.nav-link');
+        
+        // Toggle mobile menu
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a nav link
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('quoteModal');
+        const ctaBtns = document.querySelectorAll('.cta-btn');
+        const closeBtn = document.querySelector('.close-btn');
+
+        // Open modal when any CTA button is clicked
+        ctaBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (!btn.classList.contains('nav-cta')) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal when X is clicked
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>
